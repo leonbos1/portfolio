@@ -1,9 +1,9 @@
 <template>
-  <link
+  <div class="container">
+    <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   />
-  <div class="container">
     <section id="home" class="home">
       <div id="home" class="home">
         <p class="introduction">
@@ -79,6 +79,12 @@
               <span class="tag percentage">80%</span>
             </div>
           </div>
+          <div class="bar">
+            <div class="fill" style="width: 60%">
+              <div class="tag language">Laravel</div>
+              <span class="tag percentage">60%</span>
+            </div>
+          </div>
         </div>
         <div></div>
 
@@ -102,7 +108,7 @@
           <div class="project-container">
             <div class="project">
               <div class="project-image">
-                <img src="./assets/memory.png" alt="Project 1" />
+                <img src="./assets/memory.png" alt="Memory" />
               </div>
               <div class="project-text">
                 <div class="project-title">Memory</div>
@@ -120,35 +126,27 @@
 
             <div class="project">
               <div class="project-image">
-                <img src="./assets/memory.png" alt="Project 2" />
+                <img src="./assets/mobile-care-logo.png" alt="Mobile care logo" />
               </div>
               <div class="project-text">
-                <div class="project-title">Project 2</div>
+                <div class="project-title">MobilCare</div>
                 <div class="project-description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  euismod, nisl vel tincidunt luctus, nunc nisl aliquet nisl,
-                  vitae aliquet nisl nunc vel nisl. Sed euismod, nisl vel
-                  tincidunt luctus, nunc nisl aliquet nisl, vitae aliquet nisl
-                  nunc vel nisl.
+                  During this school project we made an application for an elderly home. We used ESP32's to track elderly people using an RFID tag. If something were to happen to the elderly person, the ESP32 would send a message to the application. The application would then send a message to the caretaker of the elderly person. I learned Scrum, Python and SQL during this project.
                 </div>
-                <a class="github" href="">Github</a>
+                <a class="github" href="https://github.com/leonbos1/mobilecare">Github</a>
               </div>
             </div>
 
             <div class="project">
               <div class="project-image">
-                <img src="./assets/memory.png" alt="Project 3" />
+                <img src="./assets/temperature.png" alt="Room temperature webapp" />
               </div>
               <div class="project-text">
-                <div class="project-title">Project 3</div>
+                <div class="project-title">Room temperature webapp</div>
                 <div class="project-description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  euismod, nisl vel tincidunt luctus, nunc nisl aliquet nisl,
-                  vitae aliquet nisl nunc vel nisl. Sed euismod, nisl vel
-                  tincidunt luctus, nunc nisl aliquet nisl, vitae aliquet nisl
-                  nunc vel nisl.
+                  A temperature application that I made using an ESP32, Raspberry PI and Vue. I made it because I wanted to monitor the temperature in my room during the summer. It was also a good reason to make another app in Vue since I really enjoy the framework.
                 </div>
-                <a class="github" href="">Github</a>
+                <a class="github" href="https://github.com/leonbos1/temperature">Github</a>
               </div>
             </div>
           </div>
@@ -156,13 +154,16 @@
         <div class="next">
           <div class="button">
             <div class="icon">
-              <i @click="scrollToNextPage('contact')" class="fa fa-arrow-down"></i>
+              <i
+                @click="scrollToNextPage('contact')"
+                class="fa fa-arrow-down"
+              ></i>
             </div>
           </div>
         </div>
       </div>
     </section>
-<!--
+    <!--
     <section class="blog" id="blog">
       <div class="blog" id="blog">
         <div class="title">Blog</div>
@@ -220,39 +221,43 @@
         </div>
 
         <div class="title">Contact</div>
-        <div class="contact-text">
-          If you want to contact me, you can send me an email at
-          leonbos01@outlook.com
-        </div>
+
 
         <div class="wrapper">
-          <div class="button">
-            <div class="icon">
-              <i class="fa fa-envelope"></i>
-            </div>
-            <span>Email</span>
-          </div>
-          
-
-          <div class="button">
-            <div class="icon">
-              <i class="fab fa-discord"></i>
-            </div>
-            <span>Discord</span>
+          <div class="button email">
+            <a href="mailto:bos.leon2001@gmail.com">
+              <div class="icon">
+                <i class="fa fa-envelope"></i>
+              </div>
+              <span>Email</span>
+            </a>
           </div>
 
-          <div class="button">
-            <div class="icon">
-              <i class="fab fa-github"></i>
-            </div>
-            <span>Github</span>
+          <div class="button discord">
+            <a href="https://discord.com/users/162641097460416512">
+              <div class="icon">
+                <i class="fab fa-discord"></i>
+              </div>
+              <span>Discord</span>
+            </a>
           </div>
 
-          <div class="button">
-            <div class="icon">
-              <i class="fab fa-linkedin"></i>
-            </div>
-            <span>LinkedIn</span>
+          <div class="button github">
+            <a href="https://github.com/leonbos1">
+              <div class="icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <span>Github</span>
+            </a>
+          </div>
+
+          <div class="button linkedin">
+            <a href="https://www.linkedin.com/in/leon-bos-0888a7215/">
+              <div class="icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <span>LinkedIn</span>
+            </a>
           </div>
         </div>
       </div>
@@ -270,8 +275,9 @@ export default {
       document.getElementById(page).scrollIntoView({ behavior: "smooth" });
     },
 
-    redirect(web){
-      window.location.href = web;}
+    redirect(web) {
+      window.location.href = web;
+    },
   },
 };
 </script>
@@ -467,6 +473,12 @@ div .about-text {
   transform: translateY(-50%);
 }
 
+@media screen and (min-width: 600px) {
+  .tag {
+    font-size: 2vh;
+  }
+}
+
 .language {
   left: 1vw;
 }
@@ -592,7 +604,12 @@ section .blog {
   font-size: 1vw;
 }
 
-.contact {
+section .contact {
+  .top {
+    top: 0;
+    padding: 100px;
+  }
+
   .contact-text {
     width: 90%;
     text-align: center;
@@ -626,22 +643,27 @@ section .blog {
   line-height: 60px;
   transition: all 0.3s ease-out;
 }
-.wrapper .button:nth-child(1):hover .icon {
+
+.email:hover .icon {
   background: #00ccff;
 }
-.wrapper .button:nth-child(2):hover .icon {
+
+.discord:hover .icon {
   background: #4400ff;
 }
-.wrapper .button:nth-child(3):hover .icon {
+
+.github:hover .icon {
   background: #000000;
 }
-.wrapper .button:nth-child(4):hover .icon {
+
+.linkedin:hover .icon {
   background: rgb(0, 110, 255);
 }
 .wrapper .button .icon i {
   font-size: 25px;
   line-height: 60px;
   transition: all 0.3s ease-out;
+  color: #000;
 }
 .wrapper .button:hover .icon i {
   color: #fff;
@@ -674,16 +696,7 @@ div .wrapper {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   position: relative;
-
 }
-
-.wrapper > a {
-    position: absolute;
-    top: 0; 
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
 
 div .next {
   text-align: center;
