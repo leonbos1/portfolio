@@ -2,6 +2,8 @@
 
 My first take on a portfolio website
 
+http://leonbos.nl/
+
 ## Project setup
 ```
 npm install
