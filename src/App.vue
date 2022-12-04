@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <section id="home" class="home">
       <div id="home" class="home">
         <p class="introduction">
           Hello, my name is <span class="name">Leon Bos</span><br />
-          I'm a Software Engineering Student
+          I am a Software Engineering Student
         </p>
         <div class="nav">
           <button @click="scrollToNextPage('about')">About Me</button>
@@ -25,68 +25,73 @@
         <div class="title">About</div>
 
         <div class="about-text">
-          My name is Leon Bos and I'm a 20 year old Sofware Engineering student
+          My name is Leon Bos and I'm a 21 year old Sofware Engineering student
           at the Hanzehogeschool Groningen.<br />
-          I am interested in many kinds of technologies and I am always looking
-          for new challenges.<br />
-          Currently I am looking for a parttime job as a software developer to
-          gain work experience while studying.<br />
-          If you want to know more about me, feel free to contact me.<br />
+
+          I am a hard working and motivated student who is always looking for
+          new challenges. <br />
+
+          Currently I am looking for an internship which will start in february
+          2023.
           <br />
+
+          If you want to know more about me, feel free to
+          <span class="contact-me" @click="scrollToContact()">contact me</span
+          >.<br />
+          <br />
+
           I have experience with the following technologies:<br />
           <br />
         </div>
         <div class="skill">
           <div class="bar">
-            <div class="fill" style="width: 40%">
-              <div class="tag language">CSS</div>
-              <span class="tag percentage">40%</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="fill" style="width: 70%">
-              <div class="tag language">HTML</div>
-              <span class="tag percentage">70%</span>
-            </div>
-          </div>
-          <div class="bar">
             <div class="fill" style="width: 90%">
+              <div class="tag language">Backend</div>
+            </div>
+          </div>
+
+          <div class="bar">
+            <div class="fill" style="width: 80%">
+              <div class="tag language">WebAPI</div>
+            </div>
+          </div>
+
+          <div class="bar">
+            <div class="fill" style="width: 80%">
+              <div class="tag language">Relational databases</div>
+            </div>
+          </div>
+
+          <div class="bar">
+            <div class="fill" style="width: 80%">
               <div class="tag language">Python</div>
-              <span class="tag percentage">90%</span>
             </div>
           </div>
+
           <div class="bar">
             <div class="fill" style="width: 80%">
-              <div class="tag language">Java</div>
-              <span class="tag percentage">80%</span>
+              <div class="tag language">Microcontrollers</div>
             </div>
           </div>
+
           <div class="bar">
             <div class="fill" style="width: 70%">
-              <div class="tag language">Javascript</div>
-              <span class="tag percentage">70%</span>
+              <div class="tag language">Object Oriented Programming</div>
             </div>
           </div>
+
           <div class="bar">
             <div class="fill" style="width: 70%">
-              <div class="tag language">Vue</div>
-              <span class="tag percentage">70%</span>
+              <div class="tag language">Data Structures and Algorithms</div>
             </div>
           </div>
+
           <div class="bar">
-            <div class="fill" style="width: 80%">
-              <div class="tag language">Typescript</div>
-              <span class="tag percentage">80%</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="fill" style="width: 60%">
-              <div class="tag language">Laravel</div>
-              <span class="tag percentage">60%</span>
+            <div class="fill" style="width: 70%">
+              <div class="tag language">Webscraping</div>
             </div>
           </div>
         </div>
-        <div></div>
 
         <div class="next">
           <div class="button">
@@ -113,10 +118,9 @@
               <div class="project-text">
                 <div class="project-title">Memory</div>
                 <div class="project-description">
-                  Together with my classmate Maaike Verloop I made the game
-                  memory in Javascript for a school project. During this project
-                  I learned how to make responsive web pages and I expanded my
-                  knowledge about Javascript.
+                  A javascript memory game that was made for a school project.
+                  During this project I learned how write responsive css and I
+                  expended my knowledge of javascript.
                 </div>
                 <a class="github" href="https://github.com/leonbos1/memory"
                   >Github</a
@@ -126,27 +130,51 @@
 
             <div class="project">
               <div class="project-image">
-                <img src="./assets/mobile-care-logo.png" alt="Mobile care logo" />
+                <img
+                  src="./assets/mobile-care-logo.png"
+                  alt="Mobile care logo"
+                />
               </div>
               <div class="project-text">
                 <div class="project-title">MobilCare</div>
                 <div class="project-description">
-                  During this school project we made an application for an elderly home. We used ESP32's to track elderly people using an RFID tag. If something were to happen to the elderly person, the ESP32 would send a message to the application. The application would then send a message to the caretaker of the elderly person. I learned Scrum, Python and SQL during this project.
+                  During this school project we made an application for an
+                  elderly home. We used ESP32's to track elderly people using an
+                  RFID tag. If something were to happen to the elderly person,
+                  the ESP32 would send a message to the application. The
+                  application would then send a message to the caretaker of the
+                  elderly person. I learned Scrum, Python and SQL during this
+                  project.
                 </div>
-                <a class="github" href="https://github.com/leonbos1/mobilecare">Github</a>
+                <a class="github" href="https://github.com/leonbos1/mobilecare"
+                  >Github</a
+                >
               </div>
             </div>
 
             <div class="project">
               <div class="project-image">
-                <img src="./assets/temperature.png" alt="Room temperature webapp" />
+                <img
+                  src="./assets/temperature.png"
+                  alt="Room temperature webapp"
+                />
               </div>
               <div class="project-text">
                 <div class="project-title">Room temperature webapp</div>
                 <div class="project-description">
-                  A temperature application that I made using an ESP32, Raspberry PI and Vue. I made it because I wanted to monitor the temperature in my room during the summer. It was also a good reason to make another app in Vue since I really enjoy the framework.
+                  A temperature application that I made using an ESP32,
+                  Raspberry PI and Vue. During this project I learned about
+                  webapi, Vue and SQL. Another big thing I
+                  learned during this project is scalability. The project
+                  started out as a small project but it grew into a big project.
+                  I learned how to scale a project and how to keep it
+                  maintainable.
                 </div>
-                <a class="github" href="https://github.com/leonbos1/temperature">Github</a>
+                <a class="github" href="https://github.com/leonbos1/temperature"
+                  >Github</a
+                >
+                <br />
+                <a class="" href="http://leonbos.nl:8080/">Live demo</a>
               </div>
             </div>
           </div>
@@ -174,7 +202,6 @@
         </div>
 
         <div class="title">Contact</div>
-
 
         <div class="wrapper">
           <div class="button email">
@@ -230,6 +257,10 @@ export default {
 
     redirect(web) {
       window.location.href = web;
+    },
+
+    scrollToContact() {
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
     },
   },
 };
@@ -325,7 +356,6 @@ body {
         align-items: center;
       }
 
-      //when on phone place button underneat eachother
       @media (max-width: 600px) {
         .nav {
           margin-top: 35vh;
@@ -372,7 +402,6 @@ div .about-text {
   text-align: center;
 }
 
-//media query for about-text
 @media screen and (max-width: 600px) {
   div .about-text {
     font-size: 3vw;
@@ -398,7 +427,7 @@ div .about-text {
   position: relative;
   display: block;
   width: 40vw;
-  height: 2vh;
+  height: 2.5vh;
   background: #eee;
   border-radius: 0.6em;
   margin: 1em 0;
@@ -426,18 +455,35 @@ div .about-text {
   transform: translateY(-50%);
 }
 
-@media screen and (min-width: 600px) {
-  .tag {
-    font-size: 2vh;
-  }
+.contact-me {
+  color: #ff0000;
 }
 
 .language {
   left: 1vw;
+  font-size: 2vh;
+}
+
+@media screen and (max-width: 700px) {
+  .language {
+    font-size: 1.5vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .language {
+    font-size: 1.2vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .language {
+    font-size: 1vh;
+  }
 }
 
 .percentage {
-  right: 1vw;
+  right: 1vh;
 }
 
 .skill {
@@ -477,9 +523,9 @@ section .projects {
     border: 1px solid black;
     border-radius: 50px;
     transition: all 0.6s;
-    //make screen size
     width: 25vw;
     height: 70vh;
+    overflow: hidden;
   }
 
   .project:hover {
@@ -511,8 +557,9 @@ section .projects {
     font-weight: 400;
     font-size: 1.2vw;
     text-align: center;
+    padding: 10px;
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 950px) {
     .project-description {
       font-size: 2.2vw;
     }
@@ -547,7 +594,7 @@ section .projects {
     }
 
     .project-description {
-      font-size: 2.2vw;
+      font-size: 1vh;
     }
   }
 }
