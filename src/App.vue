@@ -1,11 +1,5 @@
 <template>
   <div class="container">
-    <div style="display: none">
-      Visitors: {{ visitors }}
-      <br/>
-      {{ logs }}
-    </div>
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -314,14 +308,6 @@ export default {
       document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
     },
 
-    getVisitors() {
-      fetch("http://leonbos.nl:5050/visitors")
-        .then((res) => res.json())
-        .then((res) => {
-          this.visitors = res.visitors;
-        });
-    },
-
     postLog() {
       fetch("http://leonbos.nl:5050/log", {
         method: "POST",
@@ -329,14 +315,6 @@ export default {
           "Content-Type": "application/json",
         },
       });
-    },
-
-    getLogs() {
-      fetch("http://leonbos.nl:5050/log")
-        .then((res) => res.json())
-        .then((res) => {
-          this.logs = res;
-        });
     },
   },
 };
