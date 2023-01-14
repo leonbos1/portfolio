@@ -283,9 +283,7 @@ export default {
   },
 
   mounted() {
-    this.getVisitors();
     this.postLog();
-    this.getLogs();
   },
 
   methods: {
