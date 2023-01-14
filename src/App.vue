@@ -318,7 +318,7 @@ export default {
       fetch("http://leonbos.nl:5050/visitors")
         .then((res) => res.json())
         .then((res) => {
-          this.visitors = res.value;
+          this.visitors = res.visitors;
         });
     },
 

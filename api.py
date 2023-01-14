@@ -66,8 +66,10 @@ def add_log():
 @app.route('/visitors', methods=['get'])
 def get_visitors():
     #returns an int of the amount of visitors
-    visitors = Log.query.all()
-    return len(visitors), 200
+    visitors = len(Log.query.all())
+    obj = {'visitors': visitors}
+
+    return jsonify(obj), 200
 
 if __name__ == "__main__":
     while True:
