@@ -31,8 +31,7 @@
           I am a hard working and motivated student who is always looking for
           new challenges. <br />
 
-          Currently I am looking for an internship which will start in february
-          2023.
+          Currently I am working part time as a junior developer. In February I will start my internship at <a href="https://www.bencom.nl/">Bencom Group</a>.<br />
           <br />
 
           If you want to know more about me, feel free to
@@ -43,7 +42,18 @@
           I have experience with the following technologies:<br />
           <br />
         </div>
+
+      <!--loop over skills, skills is a key value with skillname: skillpercentage -->
+
         <div class="skill">
+          <div class="bar" v-for="(skill, skillName) in skills" :key="skillName">
+            <div :id="skillName" class="fill" :style="{width: skill + '%'}">
+              <div class="tag language">{{skillName}}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="skill">
           <div class="bar">
             <div class="fill" style="width: 90%">
               <div class="tag language">Backend</div>
@@ -91,7 +101,7 @@
               <div class="tag language">Webscraping</div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="next">
           <div class="button">
@@ -250,8 +260,30 @@ export default {
   name: "App",
   components: {},
 
+  data: function () {
+    return {
+      skills: {
+        "Backend": 90,
+        "WebAPI": 80,
+        "Relational databases": 80,
+        "Python": 80,
+        "Microcontrollers": 80,
+        "Object Oriented Programming": 70,
+        "Data Structures and Algorithms": 70,
+        "Webscraping": 70,
+      }
+    };
+  },
+
   methods: {
     scrollToNextPage(page) {
+      if (page == "about") {
+        for (const element in this.skills) {
+          let el = document.getElementById(element);
+          el.style.width = "0%"
+          el.style.width = this.skills[element] + "%"
+        }
+      }
       document.getElementById(page).scrollIntoView({ behavior: "smooth" });
     },
 
@@ -283,24 +315,38 @@ body {
       width: 100vw;
       height: 100vh;
       scroll-snap-align: start;
+      background-image: url("./assets/background.png");
 
       &:nth-of-type(1) {
-        background-image: url("./assets/background.png");
+        background-image: url("./assets/background3.png");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: 100% 100%;
       }
       &:nth-of-type(2) {
-        background-color: rgba(0, 60, 255, 0.596);
+        background-image: url("./assets/background2.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
       }
       &:nth-of-type(3) {
-        background-color: rgba(83, 32, 107, 0.555);
+        background-image: url("./assets/background4.png");
+        //background-color: rgba(83, 32, 107, 0.555);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
       }
       &:nth-of-type(4) {
-        background-color: rgba(0, 131, 33, 0.486);
+        //background-color: rgba(0, 131, 33, 0.486);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
       }
       &:nth-of-type(5) {
-        background-color: rgba(208, 212, 0, 0.411);
+        //background-color: rgba(208, 212, 0, 0.411);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
       }
     }
 
@@ -411,7 +457,7 @@ div .about-text {
   width: 100%;
   max-width: 17vw;
   height: auto;
-  border-radius: 50%;
+  border-radius: 40%;
   //move to right
   margin-left: 60vw;
   margin-top: 30vh;
@@ -439,9 +485,19 @@ div .about-text {
   position: relative;
   display: block;
   height: 100%;
-  background: #e74c3c;
+  background: #b32a2a;
   border-radius: 0.6em;
-  transition: width 0.3s ease-in-out;
+  //animation everytime section scrolls into view
+  animation: slideInFromLeft 1s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .tag {
@@ -494,6 +550,10 @@ div .about-text {
 }
 
 section .projects {
+
+  //text needs to be readable
+  color: rgb(255, 255, 255);
+
   img {
     margin-top: 50px;
     margin-left: 10%;
@@ -525,16 +585,15 @@ section .projects {
     transition: all 0.6s;
     width: 25vw;
     height: 70vh;
-    overflow: hidden;
   }
 
   .project:hover {
     transform: scale(1.2);
-    background-color: rgb(83, 32, 107);
+    background-color: rgba(0, 0, 0, 0.418);
   }
 
   img:hover {
-    transform: scale(2);
+    transform: scale(2.2);
     transition: 500ms;
   }
 
