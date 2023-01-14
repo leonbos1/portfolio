@@ -47,7 +47,7 @@ def get_log():
 
 @app.route('/log', methods=['POST'])
 def add_log():
-    datetime = datetime.datetime.now()
+    datetime = time.strftime('%Y-%m-%d %H:%M:%S')
     ip_address = request.remote_addr
 
     if ip_address == '82.72.126.62':
