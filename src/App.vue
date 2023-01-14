@@ -1,5 +1,11 @@
 <template>
   <div class="container">
+    <div style="display: none">
+      Visitors: {{ visitors }}
+      <br/>
+      {{ logs }}
+    </div>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -31,7 +37,9 @@
           I am a hard working and motivated student who is always looking for
           new challenges. <br />
 
-          Currently I am working part time as a junior developer. In February I will start my internship at <a href="https://www.bencom.nl/">Bencom Group</a>.<br />
+          Currently I am working part time as a junior developer. In February I
+          will start my internship at
+          <a href="https://www.bencom.nl/">Bencom Group</a>.<br />
           <br />
 
           If you want to know more about me, feel free to
@@ -43,12 +51,16 @@
           <br />
         </div>
 
-      <!--loop over skills, skills is a key value with skillname: skillpercentage -->
+        <!--loop over skills, skills is a key value with skillname: skillpercentage -->
 
         <div class="skill">
-          <div class="bar" v-for="(skill, skillName) in skills" :key="skillName">
-            <div :id="skillName" class="fill" :style="{width: skill + '%'}">
-              <div class="tag language">{{skillName}}</div>
+          <div
+            class="bar"
+            v-for="(skill, skillName) in skills"
+            :key="skillName"
+          >
+            <div :id="skillName" class="fill" :style="{ width: skill + '%' }">
+              <div class="tag language">{{ skillName }}</div>
             </div>
           </div>
         </div>
@@ -174,11 +186,10 @@
                 <div class="project-description">
                   A temperature application that I made using an ESP32,
                   Raspberry PI and Vue. During this project I learned about
-                  webapi, Vue and SQL. Another big thing I
-                  learned during this project is scalability. The project
-                  started out as a small project but it grew into a big project.
-                  I learned how to scale a project and how to keep it
-                  maintainable.
+                  webapi, Vue and SQL. Another big thing I learned during this
+                  project is scalability. The project started out as a small
+                  project but it grew into a big project. I learned how to scale
+                  a project and how to keep it maintainable.
                 </div>
                 <a class="github" href="https://github.com/leonbos1/temperature"
                   >Github</a
@@ -263,16 +274,24 @@ export default {
   data: function () {
     return {
       skills: {
-        "Backend": 90,
-        "WebAPI": 80,
+        Backend: 90,
+        WebAPI: 80,
         "Relational databases": 80,
-        "Python": 80,
-        "Microcontrollers": 80,
+        Python: 80,
+        Microcontrollers: 80,
         "Object Oriented Programming": 70,
         "Data Structures and Algorithms": 70,
-        "Webscraping": 70,
-      }
+        Webscraping: 70,
+      },
+      visitors: 0,
+      logs: [],
     };
+  },
+
+  mounted() {
+    this.getVisitors();
+    this.postLog();
+    this.getLogs();
   },
 
   methods: {
@@ -280,8 +299,8 @@ export default {
       if (page == "about") {
         for (const element in this.skills) {
           let el = document.getElementById(element);
-          el.style.width = "0%"
-          el.style.width = this.skills[element] + "%"
+          el.style.width = "0%";
+          el.style.width = this.skills[element] + "%";
         }
       }
       document.getElementById(page).scrollIntoView({ behavior: "smooth" });
@@ -293,6 +312,31 @@ export default {
 
     scrollToContact() {
       document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    },
+
+    getVisitors() {
+      fetch("http://leonbos.nl:5050/visitors")
+        .then((res) => res.json())
+        .then((res) => {
+          this.visitors = res.value;
+        });
+    },
+
+    postLog() {
+      fetch("http://leonbos.nl:5050/log", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    },
+
+    getLogs() {
+      fetch("http://leonbos.nl:5050/log")
+        .then((res) => res.json())
+        .then((res) => {
+          this.logs = res;
+        });
     },
   },
 };
@@ -550,7 +594,6 @@ div .about-text {
 }
 
 section .projects {
-
   //text needs to be readable
   color: rgb(255, 255, 255);
 
