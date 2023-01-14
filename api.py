@@ -68,6 +68,12 @@ def get_visitors():
     visitors = Log.query.all()
     return len(visitors)
 
-
-if __name__ == '__main__':
-    app.run(host='192.168.178.220', port=5050, debug=False)
+if __name__ == "__main__":
+    while True:
+        try:
+            with app.app_context():
+                db.create_all()
+            app.run(host="192.168.178.220", port=5050,
+                    debug=False, threaded=True)
+        except Exception as e:
+            sleep(10)
