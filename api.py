@@ -41,9 +41,10 @@ log_fields = {
 }
 
 @app.route('/log', methods=['GET'])
+@marshal_with(log_fields)
 def get_log():
-    log = Log.query.all()
-    return jsonify(log), 200
+    logs = Log.query.all()
+    return logs
 
 @app.route('/log', methods=['POST'])
 def add_log():
@@ -60,7 +61,7 @@ def add_log():
     log = Log(datetime=datetime, ip_address=ip_address, user_agent=user_agent)
     db.session.add(log)
     db.session.commit()
-    return jsonify(log), 200
+    return "Success", 200
 
 @app.route('/visitors', methods=['get'])
 def get_visitors():
