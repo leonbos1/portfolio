@@ -8,7 +8,7 @@
       <div id="home" class="home">
         <p class="introduction">
           Hello, my name is <span class="name">Leon Bos</span><br />
-          I am a Software Engineering Student
+          I am a Software Engineering Student test
         </p>
         <div class="nav">
           <button @click="scrollToNextPage('about')">About Me</button>
