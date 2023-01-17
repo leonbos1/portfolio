@@ -11,8 +11,9 @@
           I am a Software Engineering Student
         </p>
         <div class="nav">
-          <button @click="scrollToNextPage('about')">About Me</button>
-          <button @click="scrollToNextPage('contact')">Contact</button>
+          <a class="btn-flip" data-back="Leon Bos" data-front="About me" @click="scrollToNextPage('about')">
+          </a>
+          <a class="btn-flip" data-back="Leon Bos" data-front="Contact" @click="scrollToNextPage('contact')"></a>
         </div>
       </div>
     </section>
@@ -45,8 +46,6 @@
           <br />
         </div>
 
-        <!--loop over skills, skills is a key value with skillname: skillpercentage -->
-
         <div class="skill">
           <div
             class="bar"
@@ -59,55 +58,6 @@
           </div>
         </div>
 
-        <!-- <div class="skill">
-          <div class="bar">
-            <div class="fill" style="width: 90%">
-              <div class="tag language">Backend</div>
-            </div>
-          </div>
-
-          <div class="bar">
-            <div class="fill" style="width: 80%">
-              <div class="tag language">WebAPI</div>
-            </div>
-          </div>
-
-          <div class="bar">
-            <div class="fill" style="width: 80%">
-              <div class="tag language">Relational databases</div>
-            </div>
-          </div>
-
-          <div class="bar">
-            <div class="fill" style="width: 80%">
-              <div class="tag language">Python</div>
-            </div>
-          </div>
-
-          <div class="bar">
-            <div class="fill" style="width: 80%">
-              <div class="tag language">Microcontrollers</div>
-            </div>
-          </div>
-
-          <div class="bar">
-            <div class="fill" style="width: 70%">
-              <div class="tag language">Object Oriented Programming</div>
-            </div>
-          </div>
-
-          <div class="bar">
-            <div class="fill" style="width: 70%">
-              <div class="tag language">Data Structures and Algorithms</div>
-            </div>
-          </div>
-
-          <div class="bar">
-            <div class="fill" style="width: 70%">
-              <div class="tag language">Webscraping</div>
-            </div>
-          </div>
-        </div> -->
 
         <div class="next">
           <div class="button">
@@ -307,12 +257,13 @@ export default {
     },
 
     postLog() {
-      fetch("http://leonbos.nl:5050/log", {
+    /*  fetch("http://leonbos.nl:5050/log", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-      });
+      });*/
+      console.log("log posted");
     },
   },
 };
@@ -382,38 +333,62 @@ body {
         font-weight: 600;
         text-align: center;
       }
-      button {
-        background-color: transparent;
-        border: 2px solid #e74c3c;
-        border-radius: 0.6em;
-        color: transparent;
-        -webkit-align-self: center;
-        -ms-flex-item-align: center;
-        align-self: center;
-        font-size: 1rem;
-        line-height: 1;
-        padding: 1.2em 2.8em;
-        text-decoration: none;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 400;
-      }
-      button:hover,
-      button:focus {
-        color: rgb(255, 255, 255);
+
+      $speed: 0.5s;
+
+      .btn-flip {
+        opacity: 1;
         outline: 0;
+        color: #fff;
+        line-height: 40px;
+        width: 20vw;
+        position: relative;
+        text-align: center;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        &:hover {
+          &:after {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+          }
+
+          &:before {
+            opacity: 0;
+            transform: translateY(50%) rotateX(90deg);
+          }
+        }
+
+        &:after {
+          top: 0;
+          left: 0;
+          opacity: 0;
+          width: 100%;
+          color: #ffffff;
+          display: block;
+          transition: $speed;
+          position: absolute;
+          background: #ff3434;
+          content: attr(data-back);
+          transform: translateY(-50%) rotateX(90deg);
+        }
+
+        &:before {
+          top: 0;
+          left: 0;
+          opacity: 1;
+          color: #ffffff;
+          display: block;
+          padding: 0 30px;
+          line-height: 40px;
+          transition: $speed;
+          position: relative;
+          background: #0000ff;
+          content: attr(data-front);
+          transform: translateY(0) rotateX(0);
+        }
       }
 
-      button {
-        color: #fff;
-        box-shadow: 0 0 40px 40px #e74c3c inset, 0 0 0 0 #e74c3c;
-        -webkit-transition: all 150ms ease-in-out;
-        transition: all 150ms ease-in-out;
-      }
-      button:hover {
-        box-shadow: 0 0 10px 0 #e74c3c inset, 0 0 10px 4px #e74c3c;
-      }
       .nav {
         margin-top: 24vw;
         gap: 2vw;
